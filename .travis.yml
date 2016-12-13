@@ -6,6 +6,7 @@ sudo: required
 dist: trusty
 
 before_install:
+  - sudo apt-get purge -y postgis postgresql-9.5-postgis-2.3
   - sudo apt-get install -y postgresql-9.5-postgis-2.2 postgresql-9.5-postgis-scripts postgis
 
 # command to install dependencies
