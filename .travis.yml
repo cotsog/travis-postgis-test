@@ -6,7 +6,10 @@ sudo: required
 dist: trusty
 
 before_install:
-  - sudo apt-get install -y postgresql-9.5-postgis-2.2 postgresql-9.5-postgis-2.2-scripts
+  - sudo apt-get install -y postgresql-9.5-postgis-2.2 postgresql-9.5-postgis-2.2-scripts postgis
+  
+addons:
+  postgresql: "9.5"
 
 # command to install dependencies
 install:
@@ -20,4 +23,5 @@ before_script:
   - psql -f test_data.sql -U postgres -d travis_postgis
 
 # command to run tests
-script: nosetests --verbose
+script:
+  - nosetests --verbose
