@@ -10,7 +10,7 @@ before_install:
 
 # command to install dependencies
 install:
-  - "pip install -r requirements.txt --use-mirrors"
+  - "pip install -r requirements.txt"
 
 # database creation
 before_script:
