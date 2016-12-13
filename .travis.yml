@@ -6,8 +6,7 @@ sudo: required
 dist: trusty
 
 before_install:
-  - sudo apt-get purge -y postgis postgresql-9.5-postgis-2.3
-  - sudo apt-get install -y postgresql-9.5-postgis-2.2 postgresql-9.5-postgis-scripts postgis
+  - sudo apt-get install -y postgresql-9.5-postgis-2.2 postgresql-9.5-postgis-2.2-scripts
 
 # command to install dependencies
 install:
@@ -15,9 +14,9 @@ install:
 
 # database creation
 before_script:
-  - psql -c 'create database travis_postgis;' -U postgres
-  - psql -c 'CREATE EXTENSION postgis;' -U postgres -d travis_postgis
-  - psql -c 'CREATE EXTENSION postgis_topology;' -U postgres -d travis_postgis
+  - psql -c "create database travis_postgis;" -U postgres
+  - psql -c "CREATE EXTENSION postgis version '2.2.2';" -U postgres -d travis_postgis
+  - psql -c "CREATE EXTENSION postgis_topology version '2.2.2';" -U postgres -d travis_postgis
   - psql -f test_data.sql -U postgres -d travis_postgis
 
 # command to run tests
